@@ -1,17 +1,9 @@
 def max(input_array):
-    max = input_array[0]
-    for i in input_array:
-        if i > max:
-            max = i
-    return max
+    return sorted(input_array)[-1]
 
 def min(input_array):
-    min = input_array[0]
-    for i in input_array:
-        if i < min:
-            min = i
-    return min
+    return sorted(input_array)[0]
 
-x = [1, 2]
+x = [1, 2, -1, 10]
 print(max(x))
 print(min(x))
