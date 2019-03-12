@@ -1,8 +1,10 @@
 def max(input_array):
-    return sorted(input_array)[-1]
+    input_array.sort()
+    return input_array[-1]
 
 def min(input_array):
-    return sorted(input_array)[0]
+    input_array.sort()
+    return input_array[0]
 
 x = [1, 2, -1, 10]
 print(max(x))
