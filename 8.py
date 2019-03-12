@@ -1,7 +1,7 @@
 def solution(string):
     result = ""
-    for i in reversed(string):
-        result += i
+    for chr in string:
+        result = chr + result
     return result
 
 print(solution("hello"))
