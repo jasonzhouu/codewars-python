@@ -1,7 +1,4 @@
 def solution(string):
-    result = ""
-    for chr in string:
-        result = chr + result
-    return result
+    return string[::-1]
 
 print(solution("hello"))
