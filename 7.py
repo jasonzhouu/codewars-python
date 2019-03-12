@@ -1,7 +1,4 @@
 def repeat_str(string, repeat):
-    solution = ''
-    for i in range(repeat):
-        solution += string
-    return solution
+    return repeat * string
 
 print(repeat_str("hello ", 5))
