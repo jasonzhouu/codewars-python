@@ -1,4 +1,4 @@
 def correct(string):
-    return string.replace("0", "O").replace("1", "I").replace("5", "S")
+    return string.translate(str.maketrans("501", "SOI"))
 
 print(correct("NEWY0RK"))
