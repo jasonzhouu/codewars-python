@@ -1,5 +1,4 @@
-def remove_exclamation_marks(s):
-    return s.replace('!', '')
+remove_exclamation_marks=lambda s: s.replace("!", "")
 
 s = "hello!"
 print(remove_exclamation_marks(s))
