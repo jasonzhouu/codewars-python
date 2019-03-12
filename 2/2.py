@@ -1,10 +1,10 @@
+import builtins
+
 def max(input_array):
-    input_array.sort()
-    return input_array[-1]
+    return builtins.max(input_array)
 
 def min(input_array):
-    input_array.sort()
-    return input_array[0]
+    return builtins.min(input_array)
 
 x = [1, 2, -1, 10]
 print(max(x))
