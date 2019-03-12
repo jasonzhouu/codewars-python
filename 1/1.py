@@ -1,9 +1,10 @@
 def count_sheeps(arrayOfSheeps):
-    sum = 0
-    for sheep in arrayOfSheeps:
-        if sheep == True:
-            sum += 1
-    return sum
+    return arrayOfSheeps.count(True)
+    # sum = 0
+    # for sheep in arrayOfSheeps:
+    #     if sheep == True:
+    #         sum += 1
+    # return sum
 
 array1 = [True,  True,  True,  False,
           True,  True,  True,  True ,
