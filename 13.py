@@ -1,6 +1,5 @@
 def find_secret_message(paragraph):
-    li = paragraph.lower().split(" ")
-    li = [i.strip('.,:!?') for i in li]
+    li = [i.strip('.,:!?') for i in paragraph.lower().split(" ")]
     result = []
     for index, value in enumerate(li):
         li_before = li[:index]
