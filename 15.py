@@ -10,7 +10,7 @@ def mix(s1, s2):
             's1': s1.count(i),
             's2': 0,
             'max': s1.count(i),
-            'winner': 1
+            'winner': '1'
         }
     for i in set2:
         s1_temp = dic[i]['s1'] if i in dic else 0
@@ -35,16 +35,11 @@ def mix(s1, s2):
         })
 
     li = sorted(li, key=lambda x: x['max'], reverse=True)
-    print(li)
     result = ''
     for i in li:
         if i['max'] > 1:
-            result += str(i['winner'])
-            result += ':'
-            result +=  i['letter'] * i['max']
-            result += '/'
-    result = result.strip('/')
-    return result
+            result += (i['winner'] + ':' + i['letter'] * i['max'] + '/')
+    return result.strip('/')
             
 a = [
     ["Are they here", "yes, they are here"],
@@ -56,4 +51,4 @@ a = [
 ]
 
 for i in a:
-    print(mix(i[0], i[1]), '\n\n')
+    print('result: ', mix(i[0], i[1]), '\n\n')
