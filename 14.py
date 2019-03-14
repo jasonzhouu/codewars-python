@@ -59,19 +59,17 @@ def print_2_level_array(arr):
 
 def who_is_winner_per_count(pieces_position_list):
     li = create_2_level_color_map(pieces_position_list)
+    li_rotated = rotate_map(li)
+    print_2_level_array(li_rotated)
 
     result = []
     result += who_win_in_column(li)
-
-    li_rotated = rotate_map(li)
-    result += who_win_in_column(li)
-    
+    result += who_win_in_column(li_rotated)
     result += who_win_in_45_degree(li_rotated)
-
-    result = set(result)
-    if "Red" in result:
+    print(result)
+    if "Red" in result and "Yellow" not in result:
         return "Red"
-    elif "Yellow" in result:
+    if "Yellow" in result and "Red" not in result:
         return "Yellow"
     else:
         return "Draw"
@@ -81,15 +79,21 @@ def who_is_winner(pieces_position_list):
     result = "Draw"
     for i in range(len(pieces_position_list)):
         result = who_is_winner_per_count(pieces_position_list[:i+1])
-        if result != "Red" and result != "Yellow":
-            continue
-    return result
+        if result != "Draw":
+            return result
+    return "Draw"
         
 
 pieces_position_list = ["C_Yellow", "E_Red", "G_Yellow", "B_Red", "D_Yellow", "B_Red", "B_Yellow", "G_Red", "C_Yellow", "C_Red","D_Yellow", "F_Red", "E_Yellow", "A_Red", "A_Yellow", "G_Red", "A_Yellow", "F_Red", "F_Yellow", "D_Red","B_Yellow", "E_Red", "D_Yellow", "A_Red", "G_Yellow", "D_Red", "D_Yellow", "C_Red"]
 
 pieces_position_list2= ["C_Yellow", "B_Red", "B_Yellow", "E_Red", "D_Yellow", "G_Red", "B_Yellow", "G_Red", "E_Yellow", "A_Red", "G_Yellow", "C_Red", "A_Yellow", "A_Red", "D_Yellow", "B_Red", "G_Yellow", "A_Red", "F_Yellow", "B_Red", "D_Yellow", "A_Red", "F_Yellow", "F_Red", "B_Yellow", "F_Red", "F_Yellow", "G_Red", "A_Yellow", "F_Red", "C_Yellow", "C_Red", "G_Yellow", "C_Red", "D_Yellow", "D_Red", "E_Yellow", "D_Red", "E_Yellow", "C_Red", "E_Yellow", "E_Red"]
 
-print(who_is_winner(pieces_position_list))
-print(who_is_winner(pieces_position_list2))
+pieces_position_list3 = ['A_Yellow', 'B_Red', 'B_Yellow', 'C_Red', 'G_Yellow', 'C_Red', 'C_Yellow', 'D_Red', 'G_Yellow', 'D_Red', 'G_Yellow', 'D_Red', 'F_Yellow', 'E_Red', 'D_Yellow']
+
+pieces_position_list4= ['A_Red', 'B_Yellow', 'A_Red', 'E_Yellow', 'F_Red', 'G_Yellow', 'A_Red', 'G_Yellow']
+
+#print(who_is_winner(pieces_position_list))
+#print(who_is_winner(pieces_position_list2))
+print(who_is_winner(pieces_position_list3))
+#print(who_is_winner(pieces_position_list4))
 
