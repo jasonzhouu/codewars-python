@@ -34,12 +34,18 @@ def mix(s1, s2):
             'winner': dic[i]['winner']
         })
 
-    li = sorted(li, key=lambda x: x['max'], reverse=True)
-    result = ''
+    # li1 = [i for i in li if i['winner'] != '=']
+    # li2 = [i for i in li if i['winner'] == '=']
+    # li1 = sorted(li1, key=lambda x: x['max'], reverse=True)
+    # li2 = sorted(li2, key=lambda x: x['max'], reverse=True)
+    result1, result2 = '', ''
     for i in li:
         if i['max'] > 1:
-            result += (i['winner'] + ':' + i['letter'] * i['max'] + '/')
-    return result.strip('/')
+            if i['winner'] != '=':
+                result1 += (i['winner'] + ':' + i['letter'] * i['max'] + '/')
+            else:
+                result2 += (i['winner'] + ':' + i['letter'] * i['max'] + '/')
+    return (result1 + result2).strip('/')
             
 a = [
     ["Are they here", "yes, they are here"],
