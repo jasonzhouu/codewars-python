@@ -1,8 +1,10 @@
 def mix(s1, s2):
-    s1 = ''.join(s1.lower().translate(str.maketrans(',.?:/;', '      ')).split(' '))
-    s2 = ''.join(s2.lower().translate(str.maketrans(',.?:/;', '      ')).split(' '))
-    set1 = set(s1)
-    set2 = set(s2)
+    s1_all = ''.join(s1.translate(str.maketrans(',.?:/;', '      ')).split(' '))
+    s2_all = ''.join(s2.translate(str.maketrans(',.?:/;', '      ')).split(' '))
+    s1_lower = ''.join(s1.lower().translate(str.maketrans(',.?:/;', '      ')).split(' '))
+    s2_lower = ''.join(s2.lower().translate(str.maketrans(',.?:/;', '      ')).split(' '))
+    set1 = set(s1_all) & set(s1_lower)
+    set2 = set(s2_all) & set(s2_lower)
 
     dic = {}
     for i in set1:
@@ -31,21 +33,25 @@ def mix(s1, s2):
         li.append({
             'letter': i,
             'max': dic[i]['max'],
-            'winner': dic[i]['winner']
+            'winner': dic[i]['winner'],
+            'weight': 0
         })
+    weight_of_winner = {
+        "1": 3,
+        "2": 2,
+        "=": 1
+    }
+    for i in li:
+        i['weight'] += i['max']
+        i['weight'] += 0.1 * weight_of_winner[i['winner']]
+        i['weight'] += 0.001 * (200 - ord(i['letter']))
 
-    # li1 = [i for i in li if i['winner'] != '=']
-    # li2 = [i for i in li if i['winner'] == '=']
-    # li1 = sorted(li1, key=lambda x: x['max'], reverse=True)
-    # li2 = sorted(li2, key=lambda x: x['max'], reverse=True)
-    result1, result2 = '', ''
+    li = sorted(li, key=lambda x: x['weight'], reverse=True)
+    result = ''
     for i in li:
         if i['max'] > 1:
-            if i['winner'] != '=':
-                result1 += (i['winner'] + ':' + i['letter'] * i['max'] + '/')
-            else:
-                result2 += (i['winner'] + ':' + i['letter'] * i['max'] + '/')
-    return (result1 + result2).strip('/')
+            result += (i['winner'] + ':' + i['letter'] * i['max'] + '/')
+    return result.strip('/')
             
 a = [
     ["Are they here", "yes, they are here"],
