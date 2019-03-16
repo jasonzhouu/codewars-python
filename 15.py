@@ -1,20 +1,15 @@
 def mix(s1, s2):
-    s1_all = ''.join(s1.translate(str.maketrans(',.?:/;', '      ')).split(' '))
-    s2_all = ''.join(s2.translate(str.maketrans(',.?:/;', '      ')).split(' '))
-    s1_lower = ''.join(s1.lower().translate(str.maketrans(',.?:/;', '      ')).split(' '))
-    s2_lower = ''.join(s2.lower().translate(str.maketrans(',.?:/;', '      ')).split(' '))
-    set1 = set(s1_all) & set(s1_lower)
-    set2 = set(s2_all) & set(s2_lower)
-
     dic = {}
-    for i in set1:
+    for i in range(97, 123):
+        i = chr(i)
         dic[i] = {
             's1': s1.count(i),
             's2': 0,
             'max': s1.count(i),
             'winner': '1'
         }
-    for i in set2:
+    for i in range(97, 123):
+        i = chr(i)
         s1_temp = dic[i]['s1'] if i in dic else 0
         dic[i] = {
             's1': s1_temp,
