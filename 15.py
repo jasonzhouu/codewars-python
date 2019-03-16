@@ -2,26 +2,11 @@ def mix(s1, s2):
     dic = {}
     for i in range(97, 123):
         i = chr(i)
+        val1, val2 = s1.count(i), s2.count(i)
         dic[i] = {
-            's1': s1.count(i),
-            's2': 0,
-            'max': s1.count(i),
-            'winner': '1'
+            'max': max(val1, val2),
+            'winner': '1' if val1 > val2 else '2' if val1 < val2 else '='
         }
-    for i in range(97, 123):
-        i = chr(i)
-        s1_temp = dic[i]['s1'] if i in dic else 0
-        dic[i] = {
-            's1': s1_temp,
-            's2': s2.count(i),
-            'max': max(s1_temp, s2.count(i)),
-        }
-        if dic[i]['s1'] > dic[i]['s2']:
-            dic[i]['winner'] = '1'
-        elif dic[i]['s1'] < dic[i]['s2']:
-            dic[i]['winner'] = '2'
-        else:
-            dic[i]['winner'] = '='
 
     li = []
     for i in dic:
